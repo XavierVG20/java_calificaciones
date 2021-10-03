@@ -2,7 +2,7 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class App {
-    static double promedio = 0;
+    static double prom = 0;
 
     public static void main(String[] args) {
         Scanner mi_Scanner = new  Scanner(System.in);
@@ -50,13 +50,64 @@ public class App {
 
         System.out.println("Adios, asta la Proxima");
     }
- public static void prim_Parc(String[] args) {
+ public static void prim_Parc(String Guante_materias[]) {
+     Scanner pripaScanner = new Scanner(System.in);
+     int califs0[]=new int[7];
+     int pasa0 = 0 ;
+     for (int i = 0; i < califs0.length; i++) {
+         do {
+             System.out.println("Capture calificaciones de "+ Guante_materias[i]);
+         } while (pasa0 <0 || pasa0 >10);
+         califs0[i] = pasa0;
+     }
+     System.out.println("Promedio del primer Parcial");
+     System.out.println("Curso Calificacion");
+     System.out.println("------- ----------");
+     int pr = 0;
+     for (int j = 0; j < califs0.length; j++) {
+         pr = (pr + califs0[j]);
+         System.out.println(Guante_materias[j] + "===>"+ califs0[j]);
+     }
+     prom = prom + pr;
+     System.out.println("Su promedio es :" + (prom/7));
+
      
  }
- public static void seg_Parc(String[] args) {
+ public static void seg_Parc(String cursos[]) {
+     System.out.println("Curso Calificacion");
+     System.out.println("--------- ---------");
+     int califs1[]= {10,9,6,5,8,7};
+     System.out.println("Promedio 2do parcial");
+
+     int pr = 0;
+     for (int i = 0; i < califs1.length; i++) {
+         pr = (pr + califs1[i]);
+         System.out.println(cursos[i]+ "=====>" + califs1[i]);
+
+     }
+
+     prom = prom + pr;
+     System.out.println("Su promedio es :" + (prom/7));
      
 }
-public static void ter_Parc(String[] args) {
+public static void ter_Parc(String cacha_materias[] ) {
+
+    DecimalFormat dosdigitos = new DecimalFormat("##.##");
+    System.out.println("CURSO Calificacion");
+    System.out.println("___________ ___________");
+    int califs2[] = {6,7,5,8,6,7,8};
+    System.out.println("Promedio 3er parcial");
+    int pr= 0;
+    for (int j = 0; j < califs2.length; j++) {
+        pr= (pr + califs2[j]);
+        System.out.println(cacha_materias[j]+ "---->" + califs2[j]);
+
+    }
+    prom = prom + pr;
+    System.out.println("");
+    System.out.println("Su promedio Final" + dosdigitos.format(prom/21));
+
+    
      
 }
 public static String dar_Gene() {
@@ -71,11 +122,11 @@ public static String dar_Gene() {
          curp = elScanner.nextLine().toUpperCase();
          System.out.println("CURP:"+ curp);
 
-         if(curp.length()<=2){
-             System.out.println("El CURP debe tener 2 caracteres");
+         if(curp.length() <18 || curp.length() >18 ){
+             System.out.println("El CURP debe tener 18 caracteres");
 
          }
-     } while (curp.length()<=2);
+     } while (curp.length() <18 || curp.length() >1823);
      resut = resut + "CURP:" + curp + "\n";
      System.out.print("Introduzca su numerode control: ");
      numec = elScanner.nextLine();
@@ -98,8 +149,7 @@ public static String dar_Gene() {
                  carti = "";
                  System.out.print("Introdusca su num Cartilla");
                  carti = elScanner.next();
-             } while (carti.length()>=10
-               );
+             } while (carti.length()>=10);
 
              System.out.println("hombre, Cartilla"+ carti);
          }
